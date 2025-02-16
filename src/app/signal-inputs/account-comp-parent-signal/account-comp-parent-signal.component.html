@@ -1,1 +1,8 @@
-<p>account-comp-parent-signal works!</p>
+<select name="users" (change)="onSelecteUserChange($any($event.target))">
+  <option value="" selected disabled>Select user</option>
+  @for (user of users(); track user.id) {
+    <option [value]="user.id">{{ user.name }}</option>
+  }
+</select>
+<input [disabled]="isAmountOfSoldProductsDisabled()" [(ngModel)]="amountOfSoldProducts"/>
+<button mat-flat-button>Save</button>
