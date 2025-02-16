@@ -1,23 +1,28 @@
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component,
+  Component, computed,
   DestroyRef,
   effect,
   inject,
-  linkedSignal, Signal, WritableSignal
+  linkedSignal, signal, Signal, WritableSignal
 } from '@angular/core';
 import {LastEditComponent} from '../last-edit/last-edit.component';
 import {LastEditSignalComponent} from '../last-edit-signal/last-edit-signal.component';
 import {addDays} from 'date-fns';
 import {interval} from 'rxjs';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {HttpClient} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import {MatButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-account-comp-parent',
   imports: [
     LastEditComponent,
     LastEditSignalComponent,
+    FormsModule,
+    MatButton,
   ],
   templateUrl: './account-comp-parent.component.html',
   standalone: true,
