@@ -42,12 +42,17 @@ export class AccountCompParentSignalComponent {
   users = toSignal(this.http.get<any[]>('https://jsonplaceholder.typicode.com/users'), { initialValue: [] });
   selectedUser = signal<number | null>(null);
   isAmountOfSoldProductsDisabled = computed(() => this.selectedUser() ? false : 'disabled');
-  amountOfSoldProducts = linkedSignal({
-    source: this.selectedUser,
-    computation: (source, previous) => 0
+
+  secondSignal = signal(10);
+  amountOfSoldProducts = linkedSignal<{selectedUser: number | null, secondSignal: number}, number>({
+    source: () => ({
+      selectedUser: this.selectedUser(),
+      secondSignal: this.secondSignal()
+    }),
+    computation: ({secondSignal, selectedUser}) => 0
   })
 
-  onSelectedUserChange(event: HTMLSelectElement): void {
+  onSelecteUserChange(event: HTMLSelectElement): void {
     this.selectedUser.set(Number(event.value))
   }
 }
