@@ -10,6 +10,8 @@ import {ChangeDetectionStrategy, Component, model} from '@angular/core';
 })
 export class SizerSignalComponent {
   size = model.required<number>({ alias: 'fontSize' });
+  // example for viewChild
+  text = 'sizerText';
 
   dec() {
     this.resize(-1);

@@ -13,13 +13,15 @@ import {addDays} from 'date-fns';
 import {HttpClient} from '@angular/common/http';
 import {MatButton} from '@angular/material/button';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LastEditSignalComponent} from '../last-edit-signal/last-edit-signal.component';
 
 @Component({
   selector: 'app-account-comp-parent-signal',
   imports: [
     MatButton,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    LastEditSignalComponent
   ],
   templateUrl: './account-comp-parent-signal.component.html',
   styleUrl: './account-comp-parent-signal.component.scss',
@@ -27,7 +29,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountCompParentSignalComponent {
-  intervalEmitter = toSignal(interval(5000).pipe(startWith(new Date(2025, 1, 3))), {requireSync: true});
+  // last edit for ReadT and WriteT demonstration
+  lastEdit = new Date().getTime();
+  intervalEmitter = toSignal(interval(1000).pipe(startWith(new Date(2025, 1, 3))), {requireSync: true});
   private readonly http = inject(HttpClient);
 
   lastEditLinked: WritableSignal<Date> = linkedSignal({
@@ -53,6 +57,6 @@ export class AccountCompParentSignalComponent {
   })
 
   onSelecteUserChange(event: HTMLSelectElement): void {
-    this.selectedUser.set(Number(event.value))
+    this.selectedUser.set(Number(event.value));
   }
 }

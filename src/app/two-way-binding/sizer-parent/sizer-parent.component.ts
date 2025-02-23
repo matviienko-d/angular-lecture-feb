@@ -11,6 +11,5 @@ import {SizerSignalComponent} from '../sizer-signal/sizer-signal.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SizerParentComponent {
-  // signal works even without model function
   fontSizePx = 16;
 }
