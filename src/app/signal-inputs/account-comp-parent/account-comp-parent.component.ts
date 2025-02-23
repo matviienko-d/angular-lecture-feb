@@ -11,8 +11,7 @@ import {LastEditComponent} from '../last-edit/last-edit.component';
 import {LastEditSignalComponent} from '../last-edit-signal/last-edit-signal.component';
 import {addDays} from 'date-fns';
 import {interval} from 'rxjs';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
-import {HttpClient} from '@angular/common/http';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
 

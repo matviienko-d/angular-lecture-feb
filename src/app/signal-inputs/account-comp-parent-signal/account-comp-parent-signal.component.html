@@ -1,3 +1,4 @@
+<app-last-edit-signal [lastEditSignal]="lastEditLinked()"></app-last-edit-signal>
 <select name="users" (change)="onSelecteUserChange($any($event.target))">
   <option value="" selected disabled>Select user</option>
   @for (user of users(); track user.id) {

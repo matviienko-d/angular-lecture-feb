@@ -13,7 +13,13 @@ import {format} from 'date-fns/format';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LastEditSignalComponent {
-  lastEdit = input.required<Date>({alias: 'lastEditSignal'});
+  // TODO: explanation for ReadT and WriteT generics
+  lastEdit = input.required<Date, number | Date>({
+    alias: 'lastEditSignal',
+    transform: (lastEdit) => {
+      return lastEdit instanceof Date && !isNaN(lastEdit.getTime()) ? lastEdit : new Date(lastEdit);
+    }
+  });
   lastEditDisplayValue = computed(() => format(this.lastEdit(), 'dd MMM yyyy'))
   eff = effect(() => {
     localStorage.setItem('lastEdit', JSON.stringify(this.lastEdit()));

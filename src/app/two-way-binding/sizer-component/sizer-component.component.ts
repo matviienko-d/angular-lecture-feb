@@ -15,6 +15,7 @@ export class SizerComponentComponent {
   dec() {
     this.resize(-1);
   }
+
   inc() {
     this.resize(+1);
   }
