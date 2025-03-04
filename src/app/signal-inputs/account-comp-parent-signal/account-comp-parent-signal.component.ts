@@ -14,6 +14,7 @@ import {HttpClient} from '@angular/common/http';
 import {MatButton} from '@angular/material/button';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LastEditSignalComponent} from '../last-edit-signal/last-edit-signal.component';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
   selector: 'app-account-comp-parent-signal',
@@ -23,6 +24,7 @@ import {LastEditSignalComponent} from '../last-edit-signal/last-edit-signal.comp
     FormsModule,
     LastEditSignalComponent
   ],
+  providers: [UserService],
   templateUrl: './account-comp-parent-signal.component.html',
   styleUrl: './account-comp-parent-signal.component.scss',
   standalone: true,
@@ -46,7 +48,6 @@ export class AccountCompParentSignalComponent {
   users = toSignal(this.http.get<any[]>('https://jsonplaceholder.typicode.com/users'), { initialValue: [] });
   selectedUser = signal<number | null>(null);
   isAmountOfSoldProductsDisabled = computed(() => this.selectedUser() ? false : 'disabled');
-
   secondSignal = signal(10);
   amountOfSoldProducts = linkedSignal<{selectedUser: number | null, secondSignal: number}, number>({
     source: () => ({
