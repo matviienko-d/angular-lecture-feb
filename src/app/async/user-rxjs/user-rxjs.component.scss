@@ -1,0 +1,62 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.mat-mdc-list-item {
+  padding-left: 0;
+}
+
+.mat-mdc-form-field {
+  margin-top: 15px;
+  margin-bottom: 12px;
+}
+
+.add-new-field-control {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 8px;
+  }
+}
+
+.company-info {
+  &__default-field {
+
+  }
+}
+
+.h3 {
+  margin-block: unset;
+  font-weight: 500;
+  padding-bottom: 2px;
+}
+
+.company-info {
+  &__default-field {
+    margin-block: unset;
+    margin: 6px 0;
+  }
+}
+
+.company-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  &__company-info-list-item {
+    margin: 6px 0;
+  }
+}
+
+.address-info {
+  @extend .company-info;
+  &__default-field {
+    @extend .company-info__default-field;
+  }
+}
+
