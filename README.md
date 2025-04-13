@@ -1,6 +1,8 @@
-# AngularLectureFeb
+# Angular’s signal-based reactivity system
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
+Explore Angular’s powerful signal-based reactivity system and its key components. We’ll dive into practical examples, including Signal Input API, model function and converting signals to observables.You’ll also learn about new tools like resource(), rxResource(), and when to use or avoid signal effects for optimal performance.
+
+Author: Danylo Matviienko
 
 ## Development server
 
